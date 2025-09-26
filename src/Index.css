@@ -19,6 +19,6 @@
 
 @layer base {
     body {
-        @apply bg-white text-very-dark-blue font-kumbh;
+        @apply pb-10 bg-white text-very-dark-blue font-kumbh;
     }
 }
