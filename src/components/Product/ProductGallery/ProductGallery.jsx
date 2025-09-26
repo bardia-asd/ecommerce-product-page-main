@@ -68,7 +68,7 @@ export default class ProductGallery extends Component {
         const { selectedIndex } = this.state;
 
         return (
-            <div className="space-y-6">
+            <div className="lg:space-y-6">
                 {/* Main image display with navigation controls */}
                 <MainImage
                     src={images[selectedIndex].full}
