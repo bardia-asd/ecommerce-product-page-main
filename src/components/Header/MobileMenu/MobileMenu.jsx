@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Icon from "../../common/Icon";
 import MobileNav from "./MobileNav";
-import Overlay from "./Overlay";
+import Overlay from "../../common/Overlay";
 
 export default class MobileMenu extends Component {
     constructor(params) {
@@ -37,7 +37,7 @@ export default class MobileMenu extends Component {
                     closeNav={this.closeNav}
                 />
 
-                <Overlay isOpen={this.state.isOpen} closeNav={this.closeNav} />
+                <Overlay isOpen={this.state.isOpen} onClose={this.closeNav} />
             </div>
         );
     }
