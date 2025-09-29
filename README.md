@@ -13,6 +13,7 @@ A modern, responsive e-commerce product page built with React and Vite. This pro
 ## ✨ Features
 
 -   **Interactive Product Gallery** - Click on thumbnails to switch between product images
+-   **Gallery LightBox** - Open a lightbox gallery by clicking on the large product image
 -   **Mobile Navigation** - Touch-friendly navigation controls for mobile devices
 -   **Quantity Selector** - Add/remove items with increment/decrement controls
 -   **Shopping Cart** - Add items to cart with visual feedback
