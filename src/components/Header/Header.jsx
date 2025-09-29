@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import MobileMenu from "./MobileMenu/MobileMenu";
 import Logo from "./Logo";
 import NavBar from "./Nav/NavBar";
-import ShoppingCart from "./ShoppingCart/shoppingCart";
+import ShoppingCart from "./ShoppingCart/ShoppingCart";
 import Avatar from "./Avatar";
 
 export default class Header extends Component {
