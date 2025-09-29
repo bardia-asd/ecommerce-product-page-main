@@ -11,9 +11,9 @@ import NavigationButton from "./NavigationButton";
  * @param {function} onPrev - Callback function for previous image navigation
  * @param {function} onNext - Callback function for next image navigation
  */
-export default function ImageNavigation({ onPrev, onNext }) {
+export default function ImageNavigation({ onPrev, onNext, hideOnLargeScreen }) {
     return (
-        <div className="absolute inset-0 flex lg:hidden items-center justify-between px-4">
+        <div className={`absolute inset-0 flex ${!hideOnLargeScreen ? "lg:hidden" : ""} items-center justify-between px-4`}>
             <NavigationButton direction="left" onClick={onPrev} />
             <NavigationButton direction="right" onClick={onNext} />
         </div>

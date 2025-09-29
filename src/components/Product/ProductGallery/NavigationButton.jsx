@@ -15,14 +15,13 @@ import Icon from "../../common/Icon";
 export default function NavigationButton({
     direction,
     onClick,
-    className = "",
 }) {
     // Determine the icon name based on direction
     const iconName = direction === "left" ? "chevron-left" : "chevron-right";
 
     return (
         <button
-            className={`flex items-center justify-center w-10 h-10 rounded-full bg-white ${className}`}
+            className={`flex items-center justify-center w-10 h-10 rounded-full bg-white cursor-pointer`}
             onClick={onClick}
             aria-label={`Navigate ${direction}`}>
             <Icon name={iconName} size={24} />

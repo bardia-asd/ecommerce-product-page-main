@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import MainImage from "./MainImage";
 import Thumbnail from "./Thumbnail";
+import LightBox from "./LightBox";
 
 /**
  * ProductGallery Component
@@ -20,11 +21,14 @@ export default class ProductGallery extends Component {
         // Initialize component state
         this.state = {
             selectedIndex: 0, // Index of currently selected image
+            isOpen: false,
         };
 
         // Bind methods to maintain 'this' context
         this.nextImage = this.nextImage.bind(this);
         this.previousImage = this.previousImage.bind(this);
+        this.closeLightBox = this.closeLightBox.bind(this);
+        this.openLightBox = this.openLightBox.bind(this);
     }
 
     /**
@@ -63,18 +67,30 @@ export default class ProductGallery extends Component {
         });
     }
 
+    closeLightBox() {
+        this.setState({ isOpen: false });
+    }
+
+    openLightBox() {
+        this.setState({ isOpen: true });
+    }
+
     render() {
         const { images } = this.props;
-        const { selectedIndex } = this.state;
+        const { selectedIndex, isOpen } = this.state;
 
         return (
             <div className="lg:space-y-6">
                 {/* Main image display with navigation controls */}
-                <MainImage
-                    src={images[selectedIndex].full}
-                    onNext={this.nextImage}
-                    onPrev={this.previousImage}
-                />
+                <div onClick={this.openLightBox}>
+                    <MainImage
+                        src={images[selectedIndex].full}
+                        onNext={this.nextImage}
+                        onPrev={this.previousImage}
+                        hideOnLargeScreen={false}
+                        size={"w-auto h-auto"}
+                    />
+                </div>
 
                 {/* Thumbnail navigation - hidden on mobile, visible on large screens */}
                 <div className="hidden lg:flex items-center gap-5 overflow-x-auto">
@@ -86,6 +102,14 @@ export default class ProductGallery extends Component {
                             onClick={() => this.setSelectedIndex(index)}
                         />
                     ))}
+                </div>
+
+                <div className="hidden xl:block">
+                    <LightBox
+                        images={images}
+                        onClose={this.closeLightBox}
+                        isOpen={isOpen}
+                    />
                 </div>
             </div>
         );

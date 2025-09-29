@@ -15,19 +15,21 @@ import ImageNavigation from "./ImageNavigation";
  */
 export default class MainImage extends Component {
     render() {
+        const { src, onPrev, onNext, hideOnLargeScreen, size } = this.props;
         return (
-            <div className="relative lg:rounded-2xl overflow-hidden">
+            <div className="relative">
                 {/* Main product image with responsive styling */}
                 <img
-                    src={this.props.src}
+                    src={src}
                     alt="Product"
-                    className="w-full h-auto object-cover"
+                    className={`w-${size} h-${size} lg:rounded-2xl`}
                 />
 
                 {/* Navigation controls - only visible on mobile devices */}
                 <ImageNavigation
-                    onPrev={this.props.onPrev}
-                    onNext={this.props.onNext}
+                    onPrev={onPrev}
+                    onNext={onNext}
+                    hideOnLargeScreen={hideOnLargeScreen}
                 />
             </div>
         );
