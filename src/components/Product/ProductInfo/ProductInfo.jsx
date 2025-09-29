@@ -46,6 +46,9 @@ export default class ProductInfo extends Component {
     }
 
     render() {
+        const { onAddItem } = this.props;
+        const { count } = this.state;
+
         return (
             <div className="px-5 xl:pt-15">
                 {/* Company name */}
@@ -100,7 +103,12 @@ export default class ProductInfo extends Component {
                     </div>
 
                     {/* Add to cart button */}
-                    <button className="flex items-center justify-center gap-3 h-11 bg-orange hover:bg-orange/60 rounded-md w-full lg:w-2/3 cursor-pointer transition-colors duration-150">
+                    <button
+                        className="flex items-center justify-center gap-3 h-11 bg-orange hover:bg-orange/60 rounded-md w-full lg:w-2/3 cursor-pointer transition-colors duration-150"
+                        onClick={() => {
+                            onAddItem(count);
+                            this.setState({ count: 0 });
+                        }}>
                         <Icon name={"shopping-cart"} size={20} />
                         Add to cart
                     </button>
