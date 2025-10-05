@@ -1,4 +1,3 @@
-import React, { Component } from "react";
 import ImageNavigation from "./ImageNavigation";
 
 /**
@@ -13,25 +12,39 @@ import ImageNavigation from "./ImageNavigation";
  * @param {function} onPrev - Callback function for previous image navigation
  * @param {function} onNext - Callback function for next image navigation
  */
-export default class MainImage extends Component {
-    render() {
-        const { src, onPrev, onNext, hideOnLargeScreen, size } = this.props;
-        return (
-            <div className="relative">
-                {/* Main product image with responsive styling */}
-                <img
-                    src={src}
-                    alt="Product"
-                    className={`w-${size} h-${size} lg:rounded-2xl`}
-                />
+export default function MainImage({
+    src,
+    onPrev,
+    onNext,
+    hideOnLargeScreen,
+    size,
+}) {
+    // Map the `size` prop to Tailwind classes
+    const sizeClass =
+        size === "full"
+            ? "max-w-full"
+            : {
+                  sm: "max-w-sm",
+                  md: "max-w-md",
+                  lg: "max-w-lg",
+                  xl: "max-w-xl",
+              }[size] || "max-w-lg";
 
-                {/* Navigation controls - only visible on mobile devices */}
-                <ImageNavigation
-                    onPrev={onPrev}
-                    onNext={onNext}
-                    hideOnLargeScreen={hideOnLargeScreen}
-                />
-            </div>
-        );
-    }
+    return (
+        <div className="relative">
+            {/* Main product image with responsive styling */}
+            <img
+                src={src}
+                alt="Product"
+                className={`${sizeClass} h-auto lg:rounded-2xl`}
+            />
+
+            {/* Navigation controls - only visible on mobile devices */}
+            <ImageNavigation
+                onPrev={onPrev}
+                onNext={onNext}
+                hideOnLargeScreen={hideOnLargeScreen}
+            />
+        </div>
+    );
 }

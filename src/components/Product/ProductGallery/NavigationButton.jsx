@@ -12,10 +12,7 @@ import Icon from "../../common/Icon";
  * @param {function} onClick - Callback function to handle button click
  * @param {string} className - Additional CSS classes to apply (optional)
  */
-export default function NavigationButton({
-    direction,
-    onClick,
-}) {
+export default function NavigationButton({ direction, onClick }) {
     // Determine the icon name based on direction
     const iconName = direction === "left" ? "chevron-left" : "chevron-right";
 

@@ -1,12 +1,9 @@
 import React, { Component } from "react";
 import CartItem from "./CartItem";
 
-export default class Cart extends Component {
-    render() {
-        const { isOpen, items, onRemove } = this.props;
-        if (!isOpen) return null;
-
-        return (
+export default function Cart({ isOpen, items, onRemove }) {
+    return (
+        isOpen && (
             <div className="fixed top-20 right-0 left-0 px-2 pt-2 sm:absolute sm:top-full sm:left-auto sm:right-0 sm:pt-5 z-10">
                 <div className=" w-full sm:w-86 bg-white rounded-md shadow-md divide-y divide-grayish-blue/30">
                     <div className="p-4">
@@ -40,6 +37,6 @@ export default class Cart extends Component {
                     </div>
                 </div>
             </div>
-        );
-    }
+        )
+    );
 }
